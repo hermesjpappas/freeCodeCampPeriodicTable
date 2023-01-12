@@ -16,7 +16,6 @@ if [[ ! $1 ]]
   if [[ $FOUND_FROM_ATOMIC ]]
     then
     ELEMENT=$($PSQL "SELECT * FROM elements JOIN properties USING(atomic_number) JOIN types USING(type_id) WHERE atomic_number=$1")
-    echo $ELEMENT
     echo $ELEMENT | while read TYPEID BAR ATOMIC_NUMBER BAR SYMBOL BAR NAME BAR WEIGHT BAR MELT BAR BOIL BAR TYPE;
     do
       echo "The element with atomic number $ATOMIC_NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $WEIGHT amu. $NAME has a melting point of $MELT celsius and a boiling point of $BOIL celsius."
